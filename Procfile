@@ -1,0 +1,1 @@
+web: gunicorn photoalbum.wsgi

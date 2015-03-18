@@ -1,0 +1,10 @@
+{% extends "user_base.html" %}
+
+{% block content %}
+
+  <h2>Are you sure you wish to delete this album? This action can't be undone.</h2>
+  <p>Click <a href="/album/commit_delete/{{ album_id }}">DELETE</a> to delete the album, or click on the link below to CANCEL.</p>
+
+{% include "./default_link.html" %}
+
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "user_base.html" %}
+
+{% block pagetitle %}Welcome to PhotosToAlbums!{% endblock %}
+
+{% block content %}
+
+{# Well structure from bootstrap #}
+<div class="well well-sm">
+<div class="front-page-text">
+<h2>Welcome!</h2>
+<p>Have a collection of photos all over the web? Worry not, here you can compile them into albums of your own using just the links!</p>
+</div>
+{# Links for easier use #}
+<div class="front-page-links">
+<p>New user? <span class="default_button"><a href="/register">Register!</a></span></p>
+<p>Already have an account? <span class="default_button"><a href="/login">Log in</a></span></p>
+<p>Or if you're already logged in, go straight to <span class="default_button"><a href="/main">your account</a></span></p>
+</div>
+<div style="clear: both"></div>
+</div>
+{% endblock %}

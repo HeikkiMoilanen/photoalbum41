@@ -1,0 +1,35 @@
+{# Order start page. #}
+{% extends "user_base.html" %}
+
+{% block pagetitle %}Order albums{% endblock %}
+
+{% block content %}
+
+{% if new_try %}
+
+{# Panel structure from bootstrap. #}
+<div class="panel panel-warning">
+	<div class="panel-heading"><h4 class="panel-title">Problem selecting albums!</h4></div>
+
+	<div class="panel-body">You didn't choose any albums to order, or there was other problem with your order. Please try again or go <a href="/main">back to your main page</a>.</div>
+</div>
+{% endif %}
+
+<h2>Check your details before ordering, and if necessary, correct them.</h2>
+
+{% include "user_info.html" %}
+
+<h3>How many of each album you wish to order?</h3>
+<form action="/create_order" method="post">
+{% csrf_token %}
+<ul class="album_list">
+{% for album in albums %}
+<li><input type="number" name="quantity{{ album.id }}" value="0" size="1"><a href="/album/edit/{{ album.id }}">{% if album.name %}{{ album.name }}{% else %}Album {{ album.id }}{% endif %}</a>, created {{ album.date_created }}. Price: &euro;{{ album.price }}</li>
+{% empty %}
+{# Not supposed to show, if arrived the right way. #}
+<li>You have no albums available.</li>
+{% endfor %}
+</ul>
+<input type="submit" value="Order albums">
+</form>
+{% endblock %}

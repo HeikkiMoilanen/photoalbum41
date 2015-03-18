@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block pagetitle %}{% endblock %}</title>
+		{% load staticfiles %}
+        <link href="{% static "bootstrap/css/bootstrap.min.css" %}" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{% static "css/styles.css" %}" />
+        {% block stylesheets %}{% endblock %}
+        <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <script type="text/javascript" src="{% static "bootstrap/js/bootstrap.min.js" %}"></script>
+        {% block javascripts %}{% endblock %}
+    </head>
+    <body>
+
+        {% block heading %}
+            {# Styling of heading is left to user_base and album_base linked css files. #}
+            <div id="main_heading"><h1><a href="{% if user.is_authenticated %}/main{% else %}/{% endif %}">PhotosToAlbums</a></h1>
+
+                <div id="top-right-container">
+                    {% if user.is_authenticated %}
+                    <div class="logged_in">Logged in as {{ user.first_name }} {{ user.last_name }}</div>
+                    <div class="login_button"><a href="/logout">Logout</a></div>
+
+                    {% else %}
+
+                    <div class="login_button"><a href="/login">Log in</a></div>
+
+                    {% endif %}
+
+                </div>
+            </div>
+
+        {% endblock %}
+        <div id="page_container">
+            {% block content %}{% endblock %}
+        </div>
+    </body>
+</html>

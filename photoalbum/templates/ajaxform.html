@@ -1,0 +1,35 @@
+{% extends "user_base.html" %}
+
+
+{% block stylesheets %}
+<style>
+#drop_area {width:110px;height:110px;padding:10px;border:1px solid #aaaaaa;}
+#drop_area2 {width:110px;height:110px;padding:10px;border:1px solid #aaaaaa;}
+</style>
+{% endblock %}
+
+{% block javascripts %}
+  <script type="text/javascript" src="/photoalbum/static/js/ajaxtestscript.js" %></script>
+{% endblock %}
+
+{% block content %}
+  <h2 id="testaus"></h2>
+  
+  <form id="image_form">{% csrf_token %}
+    New image: <input id="image_url" type="url" name="image_url">
+    <input type="button" name="image_button" id="image_button" value="Add"/>
+  </form>
+  
+  <div id="add_image_errors">
+  </div>
+  
+  <div id="images">
+  </div>
+  
+  <div id="drop_area">
+  </div>
+  
+  <div id="drop_area2">
+  </div>
+  
+{% endblock %}

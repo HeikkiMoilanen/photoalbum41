@@ -1,0 +1,412 @@
+/* All css styles unique to album page */
+
+body #main_heading {
+
+	height: 2.2em;
+	width: 100%;
+	background-color: #202020;
+	box-shadow: 5px 5px 3px #888888;
+	padding-top: 0.15em;
+	padding-bottom: 0.1em;
+}
+
+#main_heading h1 {
+
+	color: #dddddd;
+	font-size: 14pt;
+	margin-top: 0.1em;
+    margin-left: 40%;
+    text-shadow: 0px -1px 0px #123,
+                0px 1px 2px #456;
+}
+
+#left_page {
+    width: 50%;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #00377c;
+    background-image: url('images/paper_3.png');
+    border-radius: 5px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.page_image {
+    width: 100%;
+    height: 100%;
+    z-index: 0; 
+}
+
+.box {
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 5px;
+    border-color: #00377c;
+    background-color: rgba(245, 245, 245, 0.9);
+    margin: 0.5em;
+    display: block;
+    padding: 0.3em;
+    }
+
+.photobox {
+    /*display: inline-block;*/
+    margin: 0.5em;
+    height: 29%;
+    width: 45%;
+    /*border-color: blue;
+    border-width: 1px;
+    border-style: solid;*/
+}
+
+.textbox {
+    display: inline-block;
+    margin: 0.5em;
+    height: 29%;
+    width: 45%;
+    /*border-color: blue;
+    border-width: 1px;
+    border-style: solid;*/
+}
+
+.photo {
+    /*width: 100%;
+    height: auto;*/
+    max-width: 100%;
+    max-height: 100%;
+
+}
+
+#navigation_bar {
+    position: relative;
+    height: 40em;
+    width: 20%;
+    float: left;
+}
+
+#previous_page {
+    position: absolute;
+    bottom: 0.2em;
+    left: 0.3em;
+    cursor: pointer;
+}
+
+#next_page {
+    position: absolute;
+    bottom: 0.2em;
+    right: 0.3em;
+    cursor: pointer;
+}
+
+#add_page_div {
+    position: absolute;
+    bottom: 1.2em;
+    left: 47%;
+    cursor: pointer;
+}
+
+#album {
+    float:right;
+    width: 75%;
+    height: 40em;
+    margin: 0.5em;
+    display: block;
+}
+
+.page {
+    height: 100%;
+    position: relative;  
+}
+
+#right_page {
+    float: right;
+    width: 50%;
+    background-image: url('images/paper_3.png');
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+#image_bar {
+    float:left;
+    width: 98%;
+    min-height: 6em;
+    height: auto;
+    overflow-x: scroll;
+    white-space: nowrap;
+}
+
+.imagebox {
+
+    display:inline-block;
+    white-space: normal;
+}
+
+#album_name {
+    text-align: center;
+    color: #090909;
+    font-size: 160%;
+    font-weight: normal;
+    margin: 0.3em;
+}
+
+.arrow {
+
+    margin-top: auto;
+
+}
+
+#more_arrow {
+
+    display: block;
+    float: right;
+
+}
+
+ul#image_list {
+
+    list-style: none;
+}
+
+li.list_image {
+
+    display: inline;
+    margin-right: 1em;
+}
+
+ul#image_list * img, .new_image {
+
+    height: 4em;
+    width: auto;
+}
+
+#add_image {
+    float: right;
+}
+
+.layout_option {
+    width: 80%;
+    cursor: pointer;
+    margin-top: 0.3em;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 5px;
+    border-color: #00377c;
+}
+
+#layout_list {
+    list-style-type: none;
+}
+
+#set_form {
+    text-align: center;
+}
+
+#photobox1.layout1, .photobox1.layout1 {
+    float: left;
+}
+
+#caption1.layout1, .caption1.layout1 {
+    float: right;
+}
+
+#photobox2.layout1, .photobox2.layout1 {
+    float: right;
+}
+
+#caption2.layout1, .caption2.layout1 {
+    float: left;
+}
+
+#photobox3.layout1, .photobox3.layout1 {
+    float: left;
+}
+
+#caption3.layout1, .caption3.layout1 {
+    float: right;
+}
+
+#photobox1.layout2, .photobox1.layout2 {
+    float: left;
+}
+
+#photobox2.layout2, .photobox2.layout2 {
+    clear: left;
+    float: left;
+}
+
+#photobox3.layout2, .photobox3.layout2 {
+    clear: left;
+    float: left;
+}
+
+#caption1.layout2, .caption1.layout2 {
+    float: right;
+}
+
+#caption2.layout2, .caption2.layout2 {
+    float: right;
+}
+
+
+#caption3.layout2, .caption3.layout2 {
+    float: right;
+}
+
+
+
+#top-right-container {
+    
+    margin-right: 2em;
+    margin-top: -1.4em;
+}
+
+.login_button {
+
+    display: inline;
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+    padding-left: 0.3em;
+    padding-right: 0.3em;
+    border-radius: 0.2em;
+    background-color: #f0f0ff;
+
+    box-shadow: 0px -1px 0px #888888,
+                0px 1px 2px #999999;
+}
+
+.login_button a {
+
+    color: black;
+    text-decoration: none;
+}
+
+#navigate_page_error {
+    float: left;
+}
+
+#back_to_main {
+    float: left;
+}
+
+.hidden {
+    display:none;
+}
+
+
+/*.page img {
+
+    height: 180px;
+    width: auto;
+}
+
+/* img resize with aspect ratio preserved -hack
+.page img {
+
+    height: auto;
+    width: 180px;
+}*/
+
+
+
+.public_box {
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 5px;
+    border-color: #00377c;
+    background-color: rgba(245, 245, 245, 0.9);
+    margin: 0.5em;
+    display: block;
+    padding: 0.3em;
+}
+
+#public_title {
+    width:75%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.public_album {
+    width: 75%;
+    height: 40em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.public_arrow {
+
+
+}
+
+.large_text {
+
+    font-size: 24pt;
+
+}
+
+.public_arrow #previous_spread {
+    position: absolute;
+    top: 10em;
+    left: 3em;
+    cursor: pointer;
+}
+
+.public_arrow #next_spread {
+    position: absolute;
+    top: 10em;
+    right: 3em;
+    cursor: pointer;
+}
+
+.hidden {
+
+    display: none;
+}
+
+.left_page {
+    float: left;
+    position: relative;
+    width: 49%;
+    height: 100%;
+    border-right-color: blue;
+    border-right-width: 0.1em;
+    background-image: url('images/paper_3.png');
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.right_page {
+    float: right;
+    position: relative;
+    width: 49%;
+    height: 100%;
+    background-image: url('images/paper_3.png');
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+#left_page_number, .left_page_number {
+    height: 1em;
+    width: 1em;
+    float: left;
+    clear: left;
+    position: absolute;
+    bottom: 0.5em;
+    left: 0.5em;
+}
+
+#right_page_number, .right_page_number {
+    height: 1em;
+    width: 1em;
+    float: right;
+    clear: right;
+    position: absolute;
+    bottom: 0.5em;
+    right: 0.5em;
+}
+
+#trash {
+}
+
+#eraser {
+    max-width: 4em;
+    max-height: 4em;
+}

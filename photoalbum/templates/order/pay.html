@@ -1,0 +1,50 @@
+{# Paying for an order made earlier. #}
+{% extends "user_base.html" %}
+
+{% block pagetitle %}Pay for your order{% endblock %}
+
+{% block content %}
+
+<h3>Your order:</h3>
+
+<table>
+    <tr>
+        <th>Album name</th>
+        <th>Date created</th>
+        <th>Pages</th>
+        <th>Price</th>
+        <th>Copies</th>
+    </tr>
+{% for album in order.albumsinorder_set.all %}
+    <tr>
+        <td>{% if album.album.name %}{{ album.album.name }}{% else %}Album {{ album.album.id }}{% endif %}</a></td>
+        <td>{{ album.album.date_created }}</td>
+        <td>{{ album.album.pages.count }}</td>
+        <td>&euro;{{ album.album.price }}</td>
+        <td>{{ album.quantity }}</td>
+    </tr>
+{% endfor %}
+</table>
+Total amount: &euro;{{ amount }}
+
+<form action="http://payments.webcourse.niksula.hut.fi/pay/" method="POST">
+    <input type="hidden" name="pid" value="{{ pid }}" />
+    <input type="hidden" name="sid" value="{{ sid }}" />
+    <input type="hidden" name="success_url" 
+            value="http://localhost:8000{% url 'success' %}" />
+    <input type="hidden" name="cancel_url" 
+            value="http://localhost:8000{% url 'cancel' %}" />
+    <input type="hidden" name="error_url" 
+            value="http://localhost:8000{% url 'error' %}" />
+    <input type="hidden" name="checksum" 
+            value="{{ checksum }}" />
+
+    <label for="id_amount">Amount</label> 
+    <input type="text" id="id_amount" name="amount" value="{{ amount }}" />
+    <input type="submit" value="Accept Payment"/>
+</form>
+
+
+  {% include "./default_link.html" %}
+
+{% endblock %}

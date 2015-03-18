@@ -1,0 +1,73 @@
+{# Acts as a base for looking through albums #}
+{% extends "album_base.html" %}
+
+{% block pagetitle %}Edit album{% endblock %}
+
+{% block content %}
+<div id="title" class="box">
+    <div id="album_name" contenteditable="true">{{album.name}}</div>
+</div>
+{% load staticfiles %}
+<div id="navigation_bar" class="box box-container">
+    <div id="layout_options" class="hidden">
+        <p> Choose layout: </p>
+        <ul id="layout_list">
+            <li><a class="nav_page"><img id="nav_page_1" class="layout_option" src="{% static "images/layout1.jpg" %}" onclick="setLayout(1)" draggable="false" alt="Layout 1"/></a></li>
+            <li><a class="nav_page"><img id="nav_page_2" class="layout_option" src="{% static "images/layout1.jpg" %}" onclick="setLayout(2)" draggable="false" alt="Layout 2"/></a></li>
+        </ul>
+        <div id="set_form">
+            <form id="layout_form">{% csrf_token %} 
+                <input type="button" name="layout_button" id="layout_button" value="Ok" />
+            </form>
+        </div>
+    </div>
+    <div class="arrow"><span id="previous_page" class="large_text"><span class="glyphicon glyphicon-chevron-left"></span></span>
+    </div>
+    <div class="arrow"><span id="next_page" class="large_text"><span class="glyphicon glyphicon-chevron-right"></span></span></div>
+    
+    <div id="add_page_div">
+        <form id="add_page_form">{% csrf_token %} 
+            <input type="button" name="add_page" id="add_page" value="+" />
+        </form>
+    </div>
+</div>
+<div id="album">
+    <div id="left_page" class="page">
+        <div id="photobox1" class="photobox layout1">
+            <img src="{% static 'images/insert_pic.jpg' %}" id="photo1" class="photo" ondrop="handleDrop(event)" ondragover="handleDragOver(event)" alt="Photo 1"/>
+        </div>
+        <textarea id="caption1" class="textbox layout1"> This is the first caption of the left page </textarea>
+        <div id="photobox2" class="photobox layout1">
+            <img src="{% static "images/insert_pic.jpg" %}" id="photo2" class="photo" ondrop="handleDrop(event)" ondragover="handleDragOver(event)" alt="Photo 1"/>
+        </div>
+        <textarea id="caption2" class="textbox layout1"> This is the second caption of the left page </textarea>
+        <div id="photobox3" class="photobox layout1">
+            <img src="{% static "images/insert_pic.jpg" %}" id="photo3" class="photo" ondrop="handleDrop(event)" ondragover="handleDragOver(event)" alt="Photo 1"/>
+        </div>
+        <textarea id="caption3" class="textbox layout1"> This is the third caption of the left page </textarea>
+        <div id="left_page_number"></div>
+    </div>
+</div>
+<p id="navigate_page_error"></p>
+<div id="image_bar" class="box">
+    <div class="box-container imagebox">
+        <ul id="image_list">
+        {% for image in customer_images %}
+            <li class="list_image"><img id = "{{ image.id }}" src = "{{ image.linkURL }}" draggable="true" ondragstart="handleDragStart(event)" alt="Image not found" /></li>
+        {% endfor %}
+        </ul>
+    </div>
+</div>
+<div id="add_image">
+    <form id="image_form">{% csrf_token %} New image: 
+        <input id="image_url" type="url" name="image_url" value="" />
+        <input type="button" name="image_button" id="image_button" value="Add" />
+    </form>
+    <p id="add_image_error"></p>
+</div>
+<a href="/main">
+    <div id="back_to_main" class="box">Back to main page</div>
+</a>
+<!--<span class="arrow"><span id="trash" class="large_text" ondrop="handleDrop(event)" ondragover="handleDragOver(event)"><span id="can" class="glyphicon glyphicon-trash"></span></span></span>-->
+<img src="{% static "images/eraser.png" %}" id="eraser" alt="eraser" draggable="true" ondragstart="handleDragStart(event)"/>
+{% endblock %}

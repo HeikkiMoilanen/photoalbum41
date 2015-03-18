@@ -1,0 +1,133 @@
+{# User main page. #}
+{% extends "user_base.html" %}
+
+{% block pagetitle %}User Information{% endblock %}
+
+{% block content %}
+
+<h2>Welcome, {{ user.first_name }} {{ user.last_name }}!</h2>
+
+{# Nav tab structure from bootstrap. #}
+<ul class="nav nav-tabs">
+  <li class="active"><a href="#info" data-toggle="tab">User details</a></li>
+  <li><a href="#albums" data-toggle="tab">Albums</a></li>
+  <li><a href="#orders" data-toggle="tab">Orders</a></li>
+</ul>
+
+
+<!-- Tab panes -->
+<div class="tab-content">
+  <div class="tab-pane fade in active" id="info">
+  	{% include "user_info.html" %}
+  </div>
+  <div class="tab-pane fade" id="albums">
+  	
+
+<h3>My albums</h3>
+
+{% if albums.count > 0 %}
+<table>
+	<tr>
+		<th class="col1">Album name</th>
+		<th class="col2">Date created</th>
+		<th class="col3">Pages</th>
+		<th class="col4">Price</th>
+		<th class="col5"></th>
+		<th class="col6"></th>
+	</tr>
+	{% for album in albums %}
+	{{album.shared}}
+	<tr>
+		<td class="col1"><a href="/album/edit/{{ album.id }}">{% if album.name %}{{ album.name }}{% else %}Album {{ album.id }}{% endif %}</a></td>
+		<td class="col2">{{ album.date_created }}</td>
+		<td class="col3">{{ album.pages.count }}</td>
+		<td class="col4">&euro;{{ album.price }}</td>
+		<td class="col5">{% if album.locked %}
+			This album is included in an order.
+			{% else %}
+			<a href="/album/delete/{{ album.id }}">DELETE album</a>
+			{% endif %}
+		</td>
+		<td class="col6">{% if album.shared %}
+			<a href="/album/shared/{{ album.share_id }}" target="_blank">View public album</a><br />
+			<a href="/album/unshare/{{ album.id }}">Disable public link</a>
+			{% else %}
+			<a href="/album/share/{{ album.id }}">Enable public link</a>
+
+			{% endif %}
+		</td>
+	</tr>
+	{% endfor %}
+</table>
+{% else %}
+
+<p>You haven't made any albums yet.</p>
+
+{% endif %}
+
+<form action="album/create" method="post" class="user_page_button">{% csrf_token %}
+    <input type="submit" value="Create a new album" />
+</form>
+
+{% if albums %}
+<form action="choose_albums" method="post" class="user_page_button">{% csrf_token %}
+    <input type="submit" value="Order albums" />
+</form>
+{% endif %}
+
+  </div>
+  <div class="tab-pane fade" id="orders">
+
+
+  	<h3>My orders</h3>
+
+{% if orders.count > 0 %}
+
+<table>
+	<tr>
+		<th>Order ID</th>
+		<th>Date</th>
+		<th>Price</th>
+		<th>Status</th>
+		<th>Albums</th>
+		<th></th>
+	</tr>
+{% for order in orders %}
+	<tr>
+		<td><a href="/orders/{{ order.id }}">Order {{ order.id }}</a></td>
+		<td>{{ order.date_created }}</td>
+		<td>&euro;{{ order.price }}</td>
+		<td>{{ order.get_status_display }}</td>
+		<td><ul class="album_list">
+				{% for album in order.albumsinorder_set.all %}
+				<li>{% if album.album.name %}{{ album.album.name }}{% else %}Album {{ album.album.id }}{% endif %}, created {{ album.album.date_created }}, {{ album.quantity }} copies ordered at &euro;{{ album.album.price}} per copy.</li>
+				{% endfor %}
+			</ul>
+		</td>
+		<td>{% if order.status == '' or order.status == 'OR' %}<a href="/order/cancel/{{ order.id }}">CANCEL order</a>
+			{% endif %}</td>
+	</tr>
+
+{% endfor %}
+</table>
+{% else %}
+
+<p>You have made no orders yet.</p>
+
+{% endif %}
+{% if albums %}
+<form action="choose_albums" method="post" class="user_page_button">{% csrf_token %}
+    <input type="submit" value="Order albums" />
+</form>
+{% endif %}
+
+  </div>
+</div>
+
+
+
+
+
+<hr>
+
+{% endblock %}

@@ -1,0 +1,54 @@
+{# Acts as a base for looking through albums #}
+{% extends "album_base.html" %}
+
+{% block javascripts %}
+{% load staticfiles %}
+<script>var album_id = {{album.id}};
+        var max_pages = {{ pages.count }}</script>
+<script type="text/javascript" src="{% static "js/album_view.js" %}"></script>
+{% endblock %}
+
+{% block pagetitle %}View {{album.name}}{% endblock %}
+
+{# Overrides base.html heading #}
+{% block heading %}
+            <div id="main_heading"><h1><a href="/">PhotosToAlbums</a></h1>
+            </div>
+{% endblock %}
+
+{% block content %}
+<div id="public_title" class="box">
+    <div id="album_name">{{album.name}}</div>
+</div>
+
+{# Gets all pages here. Showing them a spread at a time is handled by javascript #}
+<div id="public_album" class="public_album public_box">
+{% for page in pages|dictsort:"pagenumber" %}
+
+    <div id="page_{{ page.pagenumber }}" class="left_page hidden">
+
+        {% for imageinpage in page.imagesonpage.all|dictsort:"index" %}
+        <div id="photobox{{ imageinpage.index }}{{ page.pagenumber }}" class="photobox photobox{{ imageinpage.index }} layout{{ page.layout }}">
+            <img src="{{ imageinpage.image.linkURL }}" id="photo{{ imageinpage.index }}{{ page.pagenumber }}" class="photo photo{{ imageinpage.index }}" alt="Photo {{ imageinpage.index }}"/>
+        </div>
+        <div id="caption{{ imageinpage.index }}{{ page.pagenumber }}" class="textbox caption{{ imageinpage.index }} layout{{ page.layout }}">
+        {% if imageinpage.caption != 'insert your caption here' %}
+        {{ imageinpage.caption }}
+        {% endif %}
+        </div>
+        {% endfor %}
+        <div id="page_number_{{ page.pagenumber }}" class="left_page_number">{{ page.pagenumber }}</div>
+    </div>
+
+
+{% endfor %}
+</div>
+
+<div class="public_arrow"><span id="previous_spread" class="large_text"><span class="glyphicon glyphicon-chevron-left"></span></span>
+</div>
+<div class="public_arrow"><span id="next_spread" class="large_text"><span class="glyphicon glyphicon-chevron-right"></span></span></div>
+
+
+<p id="navigate_page_error"></p>
+
+{% endblock %}

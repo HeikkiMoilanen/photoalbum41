@@ -1,0 +1,10 @@
+{% extends "user_base.html" %}
+
+{% block content %}
+
+  <h2>Are you sure you wish to cancel this order? This action can't be undone.</h2>
+  <p>Click <a href="/order/commit_cancel/{{ order_id }}">HERE</a> to Cancel the order, or click the link below to go back to your main page.</p>
+
+{% include "./default_link.html" %}
+
+{% endblock %}

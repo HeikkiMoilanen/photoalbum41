@@ -1,0 +1,40 @@
+{% extends "user_base.html" %}
+
+{% block pagetitle %}Order details{% endblock %}
+
+{% block content %}
+
+<h2>Order {{ order.id }}</h2>
+
+<p><strong>Total price:</strong> &euro;{{ order.price }}</p>
+<p><strong>Order status:</strong> {{ order.get_status_display }}</p>
+
+{% if order.status == '' or order.status == 'OR' %}
+<p>This order hasn't been paid for yet.</p>
+<p><a href="/order/pay/{{ order.id }}">Pay for the order</a></p>
+<p><a href="/order/cancel/{{ order.id }}">CANCEL order</a></p>
+{% endif %}
+
+<h3>Albums in Order {{ order.id }}:</h3>
+<table>
+	<tr>
+		<th>Album name</th>
+		<th>Date created</th>
+		<th>Pages</th>
+		<th>Price</th>
+		<th>Copies</th>
+	</tr>
+	{% for album in albums %}
+	<tr>
+		<td>{% if album.album.name %}{{ album.album.name }}{% else %}Album {{ album.album.id }}{% endif %}</a></td>
+		<td>{{ album.album.date_created }}</td>
+		<td>{{ album.album.pages.count }}</td>
+		<td>&euro;{{ album.album.price }}</td>
+		<td>{{ album.quantity }}</td>
+	</tr>
+	{% endfor %}
+<table>
+
+  {% include "./default_link.html" %}
+
+{% endblock %}

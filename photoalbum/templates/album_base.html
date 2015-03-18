@@ -1,0 +1,13 @@
+{# Acts as a base for looking through albums #}
+{% extends "base.html" %}
+
+{% block stylesheets %}
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static "css/album.css" %}" /> 
+{% endblock %}
+{% block javascripts %}
+{% load staticfiles %}
+<script>var album_id = {{album.id}}</script>
+<script type="text/javascript" src="{% static "js/album_base.js" %}"></script>
+{% endblock %}
+

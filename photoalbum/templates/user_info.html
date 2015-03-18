@@ -1,0 +1,14 @@
+{# User info listing. Only used included in a relevant other template. #}
+
+<h3>User information</h3>
+
+<p><strong>First name:</strong> {{ user.first_name }}</p>
+<p><strong>Last name:</strong> {{ user.last_name }}</p>
+<p><strong>Email address:</strong> {{ user.email }}</p>
+<p><strong>Street address:</strong> {% if user.customer.street_address %}{{ user.customer.street_address }}{% else %}Not given{% endif %}</p>
+<p><strong>Postal code:</strong> {% if user.customer.postal_code %}{{ user.customer.postal_code }}{% else %}Not given{% endif %}</p>
+<p><strong>City:</strong> {% if user.customer.city %}{{ user.customer.city }}{% else %}Not given{% endif %}</p>
+<p><strong>Country:</strong> {% if user.customer.country %}{{ user.customer.country }}{% else %}Not given{% endif %}</p>
+
+<p><a href="update">Change user information</a></p>
+

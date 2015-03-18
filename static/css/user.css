@@ -1,0 +1,160 @@
+/* Styles only used in non-album-view pages */
+
+body #main_heading {
+
+	height: 3em;
+	width: 100%;
+	background-color: #202020;
+	box-shadow: 5px 5px 3px #888888;
+	padding-top: 0.3em;
+	padding-bottom: 0.3em;
+}
+
+#main_heading h1 {
+
+	color: #dddddd;
+	font-size: 16pt;
+	margin-top: 0.2em;
+	margin-bottom: 0.2em;
+	margin-left: 40%;
+    text-shadow: 0px -1px 0px #123,
+                0px 1px 2px #456;
+}
+
+li {
+
+	list-style: none;
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+	margin-left: -2em;
+}
+
+li.album_list {
+
+	font-size: large;
+}
+
+ul.album_info li {
+
+	font-size: smaller;
+}
+
+table {
+
+	margin: 1em;
+	border: none;
+}
+
+th {
+
+	text-align: left;
+}
+
+td, th {
+
+	border-bottom-width: 1px;
+	border-bottom-style: dotted;
+	margin: 0.2em;
+	padding: 0.3em;
+}
+
+.col1 {
+
+	width: 8em;
+}
+
+.col2 {
+
+	width: 8em;
+}
+
+.col3 {
+
+	width: 4em;
+}
+
+.col4 {
+
+	width: 4em;
+}
+
+.col5 {
+
+	width: 10em;
+}
+
+.col5 {
+
+	width: 10em;
+}
+
+#top-right-container {
+
+	margin-right: 2em;
+	margin-top: -1.8em;
+}
+
+.login_button {
+
+	display: inline;
+	padding: 0.5em;
+	border-radius: 0.2em;
+	background-color: #f0f0ff;
+
+    box-shadow: 0px -1px 0px #888888,
+                0px 1px 2px #999999;
+}
+
+.login_button a {
+
+	color: black;
+	text-decoration: none;
+}
+
+.user_page_button {
+
+	display: inline;
+}
+
+.default_button {
+
+	display: inline;
+	padding: 0.5em;
+	border-radius: 0.2em;
+	background-color: #f0f0ff;
+
+    box-shadow: 0px 1px 2px #999999;
+}
+
+.default_button a {
+
+	color: black;
+	text-decoration: none;
+}
+
+.front-page-links {
+
+	display: block;
+	float: right;
+	text-align: right;
+	width: 40%;
+}
+
+.front-page-links p {
+
+	margin: 1em;
+	line-height: 200%;
+}
+
+.front-page-text {
+
+	display: block;
+	float: left;
+	width: 40%;
+}
+
+.front-page-text p {
+
+	margin: 1em;
+	padding: 0.5em;
+}
